@@ -21,7 +21,7 @@ import org.quartz.TriggerBuilder;
 @ApplicationScoped
 public class TaskBean {
 
-    private Scheduler scheduler;
+    private final Scheduler scheduler;
 
     @Inject
     public TaskBean(Scheduler scheduler) {
@@ -56,7 +56,7 @@ public class TaskBean {
         @Inject TaskBean taskBean;
 
         @Override
-        public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
+        public void execute(JobExecutionContext jobExecutionContext) {
             taskBean.performTask();
         }
     }
